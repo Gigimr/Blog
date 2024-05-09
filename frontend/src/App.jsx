@@ -96,7 +96,7 @@ const App = () => {
     <div>
       {user === null ? (
         <div>
-          <h1>Log in to application</h1>
+
           {notificationInfo && (
             <Notification notificationInfo={notificationInfo} />
           )}
