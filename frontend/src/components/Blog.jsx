@@ -5,13 +5,6 @@ const Blog = ({
   deletingBlogs,
   loggedInUser,
 }) => {
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: 'solid',
-    borderWidth: 1,
-    marginBottom: 5,
-  };
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -35,7 +28,7 @@ const Blog = ({
   };
 
   return (
-    <div style={blogStyle}className="blog">
+    <div className={`p-2 blog mx-2 w-60 h-36 border-2 rounded border-grey-400`}>
       <span id='blogTitle'>{blog.title}</span> - <span id='blogAuthor'>{blog.author}</span>
       <button onClick={toggleVisibility}>{!visible?'view':'hide'}</button>
       {visible &&<>
