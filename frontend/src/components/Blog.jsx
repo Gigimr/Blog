@@ -28,26 +28,26 @@ const Blog = ({
   };
 
   return (
-    <div className={`p-2 blog mx-2 w-60 h-36 border-2 rounded border-grey-400`}>
-      <span id='blogTitle'>{blog.title}</span> - <span id='blogAuthor'>{blog.author}</span>
-      <button onClick={toggleVisibility}>{!visible?'view':'hide'}</button>
-      {visible &&<>
-        <br/>
-        <span id='blogUrl'>{blog.url}</span>
-        <br/>
-        <span id='blogLikes'>{blog.likes}</span>
-        <button onClick={handleLikes}>like</button>
-        {blog.user && <div>{blog.user.username}</div>}
-        {blog.user &&
+    <div className={'p-2 blog mx-2 my-2 w-60 h-42 border-2 rounded border-grey-400'}>
+      <h1 className='text-lg font-bold' id='blogTitle'>{blog.title}</h1>
+      <span className='text-blue-800' id='blogUrl'>
+        <a href={blog.url}>View Blog</a>
+      </span>
+      <br/>
+      <span id='blogLikes'>{blog.likes} </span>
+      <button className="bg-gray-400 hover:bg-gray-500 text-white font-bold  px-1 rounded-md" onClick={handleLikes}> likes</button>
+      <br/>
+        By - <span id='blogAuthor'>{blog.author}</span>
+      {blog.user && <div>{blog.user.username}</div>}
+      {blog.user &&
           loggedInUser &&
           blog.user.username === loggedInUser.username && (
-          <button
-            id= "removeButton"
-            onClick={confirmDelete}>
+        <button className="bg-gray-400 hover:bg-gray-500 text-white font-bold  px-1 rounded-md"
+          id= "removeButton"
+          onClick={confirmDelete}>
           remove
-          </button>
-        )}
-      </> }
+        </button>
+      )}
     </div>
   );
 };

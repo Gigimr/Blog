@@ -3,7 +3,7 @@ import Blog from './Blog';
 
 const BlogList = ({ blogs, addingLikes, deletingBlogs, user }) => {
   return (
-    <div className='flex flex-wrap justify-center'>
+    <div className=''>
       {blogs
         .sort((a, b) => b.likes - a.likes)
         .map((blog) => (

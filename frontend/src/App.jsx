@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import Togglable from './components/Togglable';
 import Notification from './components/Notification';
 import BlogList from './components/BlogList';
+import Header from './components/Header';
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
@@ -60,9 +61,8 @@ const App = () => {
   };
 
   const handleLogOut = () => {
-    console.log('Cerrando sesión');
     window.localStorage.clear();
-    window.location.href = 'http://localhost:5173/';
+    setUser(null);
   };
 
   const addBlog = (createBlog) => {
@@ -94,10 +94,9 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='w-full h-full'>
       {user === null ? (
         <div>
-
           {notificationInfo && (
             <Notification notificationInfo={notificationInfo} />
           )}
@@ -110,24 +109,28 @@ const App = () => {
           />
         </div>
       ) : (
-        <div className={claases.test}>
-          <h1>Blogs</h1>
-          {notificationInfo && (
-            <Notification notificationInfo={notificationInfo} />
-          )}
-          <p>
-            {user.name} logged in <button onClick={handleLogOut}>logout</button>
+        <div className='flex justify-center'>
+        <div className='w-9/12' >
+          <Header />
+          <p className="mt-2 text-lg leading-8 text-gray-600">
+            {user.name} logged in <button className="bg-gray-400 hover:bg-gray-500 text-white font-bold  px-1 rounded-md"
+              onClick={handleLogOut}>
+                logout
+            </button>
           </p>
-          <Togglable buttonLabel="new blog" ref={blogFormRef}>
+          <Togglable buttonLabel={<button className="bg-gray-400 hover:bg-gray-500 text-white font-bold  px-1 py-1 rounded-md">
+              New Blog
+          </button>} ref={blogFormRef}>
             <BlogForm createBlog={addBlog} />
           </Togglable>
-          <div>
+          <div className='text-center'>
             <BlogList
               blogs={blogs}
               addingLikes={addingLikes}
               deletingBlogs={deletingBlogs}
               user={user}/>
           </div>
+        </div>
         </div>
       )}
     </div>
