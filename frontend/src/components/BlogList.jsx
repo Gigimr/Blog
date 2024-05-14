@@ -3,7 +3,7 @@ import Blog from './Blog';
 
 const BlogList = ({ blogs, addingLikes, deletingBlogs, user }) => {
   return (
-    <div className=''>
+    <div className >
       {blogs
         .sort((a, b) => b.likes - a.likes)
         .map((blog) => (
@@ -19,5 +19,6 @@ const BlogList = ({ blogs, addingLikes, deletingBlogs, user }) => {
   );
 
 };
+//"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
 
 export default BlogList;

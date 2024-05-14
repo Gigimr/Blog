@@ -94,9 +94,9 @@ const App = () => {
   };
 
   return (
-    <div className='w-full h-full'>
+    <div className="min-h-screen bg-gradient-to-r from-slate-400 to-gray-200">
       {user === null ? (
-        <div>
+        <div className='flex justify-center items-center h-screen'>
           {notificationInfo && (
             <Notification notificationInfo={notificationInfo} />
           )}
@@ -109,28 +109,33 @@ const App = () => {
           />
         </div>
       ) : (
+
         <div className='flex justify-center'>
-        <div className='w-9/12' >
-          <Header />
-          <p className="mt-2 text-lg leading-8 text-gray-600">
-            {user.name} logged in <button className="bg-gray-400 hover:bg-gray-500 text-white font-bold  px-1 rounded-md"
-              onClick={handleLogOut}>
+          <div className="w-9/12">
+            <Header />
+            <h2 className="mt-2 text-xl leading-8 text-gray-600">
+              {user.name} logged in
+              <button
+                className="bg-slate-200 hover:bg-slate-300 text-zinc-500 font-bold px-2 rounded-md"
+                onClick={handleLogOut}
+              >
                 logout
-            </button>
-          </p>
-          <Togglable buttonLabel={<button className="bg-gray-400 hover:bg-gray-500 text-white font-bold  px-1 py-1 rounded-md">
-              New Blog
-          </button>} ref={blogFormRef}>
-            <BlogForm createBlog={addBlog} />
-          </Togglable>
-          <div className='text-center'>
-            <BlogList
-              blogs={blogs}
-              addingLikes={addingLikes}
-              deletingBlogs={deletingBlogs}
-              user={user}/>
+              </button>
+            </h2>
+            <Togglable buttonLabel={<button className="bg-slate-200 hover:bg-slate-300 text-zinc-500 font-bold px-1 py-1 rounded-md mb-2">
+              New Blog</button>} ref={blogFormRef}>
+              <br />
+              <BlogForm createBlog={addBlog} />
+            </Togglable>
+            <div className="text-center">
+              <BlogList
+                blogs={blogs}
+                addingLikes={addingLikes}
+                deletingBlogs={deletingBlogs}
+                user={user}
+              />
+            </div>
           </div>
-        </div>
         </div>
       )}
     </div>

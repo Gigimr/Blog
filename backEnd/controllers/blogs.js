@@ -43,6 +43,7 @@ blogsRouter.post('/', async (request, response) => {
     url: body.url,
     likes: body.likes || 0,
     user: user._id,
+    content : body.content
   });
 
   try {
@@ -88,6 +89,7 @@ blogsRouter.put('/:id', async (request, response, next) => {
     author: body.author,
     url: body.url,
     likes: body.likes || 0,
+    content : body.content
   };
 
   try {

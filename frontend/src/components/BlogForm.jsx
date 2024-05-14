@@ -3,6 +3,7 @@ import { useState } from 'react';
 const BlogFom = ({ createBlog }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [content , setContent] = useState('');
   const [url, setUrl] = useState('');
 
   const handleTitle = (e) => {
@@ -14,7 +15,9 @@ const BlogFom = ({ createBlog }) => {
   const handleUrl = (e) => {
     setUrl(e.target.value);
   };
-
+  const handleContent = (e) => {
+    setContent(e.target.value);
+  };
   const addBlog = (e) => {
     e.preventDefault();
 
@@ -22,10 +25,12 @@ const BlogFom = ({ createBlog }) => {
       title: title,
       author: author,
       url: url,
+      content: content,
     });
     setTitle('');
     setAuthor('');
     setUrl('');
+    setContent('');
   };
 
   return (
@@ -40,6 +45,13 @@ const BlogFom = ({ createBlog }) => {
           placeholder='write tittle here'
         />
         <br />
+        content:
+        <input
+          id='content'
+          value={content}
+          onChange={handleContent}
+          placeholder='write content here'/>
+        <br/>
         author:
         <input
           id='author'
